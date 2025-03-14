@@ -1,4 +1,6 @@
 1)
+List all books issued with students details
+
 select students.name, books.title,books.author from books inner join bookissues on books.bookid=bookissues.bookid inner join students on students.studentid=bookissues.studentid;
 +------------+---------------------------+---------------+
 | name       | title                     | author        |
@@ -11,6 +13,8 @@ select students.name, books.title,books.author from books inner join bookissues 
 +------------+---------------------------+---------------+
 
 2)
+List students who have issued books along with their departments(student id , name, departments)
+
 select students.studentid,students.name,departments.dname from students inner join bookissues on students.studentid=bookissues.studentid inner join departme students.dno=departments.dno;
 +-----------+------------+-------+
 | studentid | name       | dname |
@@ -22,6 +26,8 @@ select students.studentid,students.name,departments.dname from students inner jo
 
 
 3)
+Find books that have never been issued (title, author)
+
 
 select books.title , books.author from books left outer join  bookissues on books.bookid= bookissues.bookid where bookissues.bookid is NULL;
 +------------+--------+
@@ -31,6 +37,9 @@ select books.title , books.author from books left outer join  bookissues on book
 +------------+--------+
 
 4)
+Get students who have issue
+
+
 select students.studentid,students.name from students left outer join bookissues on students.studentid=bookissues.studentid where bookissues.bookid is null;
 +-----------+-----------+
 | studentid | name      |
