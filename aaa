@@ -1,3 +1,7 @@
 select students.studentid,students.name,departments.dname from students,
 departments where students.dno=departments.dno;
 
+ select students.studentid,students.name,departments.dname,books.bookid,books.title from students inner join bookissues on students.studentid=bookissues.studentid inner join departments on students.dno=departments.dno inner join books on books.bookid=bookissues.bookid;
+
+
+
