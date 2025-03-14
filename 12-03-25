@@ -31,4 +31,10 @@ select books.title , books.author from books left outer join  bookissues on book
 +------------+--------+
 
 4)
+select students.studentid,students.name from students left outer join bookissues on students.studentid=bookissues.studentid where bookissues.bookid is null;
++-----------+-----------+
+| studentid | name      |
++-----------+-----------+
+|       104 | Sneha K P |
++-----------+-----------+
 
