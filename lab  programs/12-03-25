@@ -15,7 +15,7 @@ select students.name, books.title,books.author from books inner join bookissues 
 2)
 List students who have issued books along with their departments(student id , name, departments)
 
-select students.studentid,students.name,departments.dname from students inner join bookissues on students.studentid=bookissues.studentid inner join departme students.dno=departments.dno;
+select students.studentid,students.name,departments.dname from students inner join bookissues on students.studentid=bookissues.studentid inner join departments students.dno=departments.dno;
 +-----------+------------+-------+
 | studentid | name       | dname |
 +-----------+------------+-------+
