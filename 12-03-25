@@ -1,0 +1,34 @@
+1)
+select students.name, books.title,books.author from books inner join bookissues on books.bookid=bookissues.bookid inner join students on students.studentid=bookissues.studentid;
++------------+---------------------------+---------------+
+| name       | title                     | author        |
++------------+---------------------------+---------------+
+| Midhun K   | Database Systems          | Ramez Elmasri |
+| Sidharth M | Database Systems          | Ramez Elmasri |
+| Midhun K   | Operating System Concepts | Silberschatz  |
+| Sidharth M | Operating System Concepts | Silberschatz  |
+| Ann Mariya | Algorithms                | Cormen        |
++------------+---------------------------+---------------+
+
+2)
+select students.studentid,students.name,departments.dname from students inner join bookissues on students.studentid=bookissues.studentid inner join departme students.dno=departments.dno;
++-----------+------------+-------+
+| studentid | name       | dname |
++-----------+------------+-------+
+|       101 | Midhun K   | MCA   |
+|       101 | Midhun K   | MCA   |
+|       102 | Ann Mariya | MCA   |
++-----------+------------+-------+
+
+
+3)
+
+select books.title , books.author from books left outer join  bookissues on books.bookid= bookissues.bookid where bookissues.bookid is NULL;
++------------+--------+
+| title      | author |
++------------+--------+
+| Networking | Febin  |
++------------+--------+
+
+4)
+
