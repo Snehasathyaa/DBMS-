@@ -1,0 +1,73 @@
+
+select  * from students;
++-----------+------------+------+------+
+| studentid | name       | age  | dno  |
++-----------+------------+------+------+
+|       101 | Midhun K   |   32 |    1 |
+|       102 | Ann Mariya |   22 |    1 |
+|       103 | Sidharth M |   21 | NULL |
+|       104 | Sneha K P  |   23 |    1 |
+|       105 | Anusha A   |   29 |    1 |
+|       106 | Nayana     |   26 |    3 |
+|       107 | Akhila     |   23 |    3 |
+|       108 | Shifana    |   23 |    3 |
+|       109 | Shameema   |   25 |    2 |
+|       110 | Anfeer     |   30 |    2 |
++-----------+------------+------+------+
+10 rows in set (0.00 sec)
+
+mysql> select count(*) from students group by dno;
++----------+
+| count(*) |
++----------+
+|        1 |
+|        4 |
+|        2 |
+|        3 |
++----------+
+
+
+
+
+
+
+ 
+ select count(*) as total_students  from students ;
++----------------+
+| total_students |
++----------------+
+|             10 |
++----------------+
+
+
+ select count(*) as total_books  from books ;
++-------------+
+| total_books |
++-------------+
+|          10 |
++-------------+
+
+
+select avg(price) from books;
++------------+
+| avg(price) |
++------------+
+| 455.000000 |
++------------+
+
+
+select max(price) as expenssive , min(price) as cheapest from books;
++------------+----------+
+| expenssive | cheapest |
++------------+----------+
+|     770.00 |   100.00 |
++------------+----------+
+
+
+select count(bookid) from bookissues;
++---------------+
+| count(bookid) |
++---------------+
+|            10 |
++---------------+
+
