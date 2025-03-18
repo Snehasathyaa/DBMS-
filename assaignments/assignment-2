@@ -15,10 +15,11 @@ create table departments(dno int primary key,dname varchar(50) NOT NULL);
 --
 -- Table structure for table bookissues
 --
+create table bookissues(bookid int, studentid int, issue_date date, return_date date, fine decimal(5,2) default 0.00);
 
-create table bookissues(bookid int ,studentid int, issue_date date, return_date date, constraint bookissues_fkey_bookid foreign key(bookid) references books(bookid), constraint bookissues_fkey_studentid foreign key(studentid) references students(studentid) );
-
-alter table bookissues add fine decimal (5,2) default 0.00;
+alter table bookissues add primary key(bookid,studentid);
+alter table bookissues add constraint bookissues_fkey_bookid foreign key(bookid) references books(bookid);
+alter table bookissues add constraint bookissues_fkey_studentid foreign key(studentid) references students(studentid);
 
 
 --
@@ -72,16 +73,18 @@ select books.bookid , books.author from books left outer join  bookissues on boo
 
 --Q11.Get students who have not issued any book (include attributes studentid, name)
 
-select students.studentid,students.name from students left outer join bookissues on students.studentid=bookissues.studentid where bookissues.bookid is null;
+select students.studentid,students.name from students left outer join bookissues on students.studentid=bookissues.studentid where bookissues.studentid is null;
 
 
 
 --Q12.Find students who have issued books but not returned them yet (include attributes studentid, name)
 
+select students.studentid, students.name from students join bookissues on bookissues.studentid = students.studentid where return_date is NULL;
 
 
 --Q13.List the books whose price greater than rupees 600 (include attributes bookid, title)
 
+select books.bookid, books.title from books where price > %s;
 
 
 
