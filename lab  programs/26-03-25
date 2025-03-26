@@ -1,0 +1,1 @@
+ select * from departments join students on departments.dno=students.dno  join bookissues on students.studentid=bookissues.studentid  join books on bookissues.bookid=bookissues.bookid;
