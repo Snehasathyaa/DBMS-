@@ -1,1 +1,10 @@
- select * from departments join students on departments.dno=students.dno  join bookissues on students.studentid=bookissues.studentid  join books on bookissues.bookid=bookissues.bookid;
+~~ join department , students, books, bookissues
+
+select * from departments join students on departments.dno=students.dno  join bookissues on students.studentid=bookissues.studentid  join books on bookissues.bookid=bookissues.bookid;
+
+
+~~ create view and display
+
+create view library as (select * from departments natural join students natural  join bookissues natural join books);
+
+select * from library;
