@@ -21,3 +21,14 @@ select * from library;
 |      5 |       105 |   1 | MCA   | Anusha A   |   29 | 2025-02-03 | NULL        | 0.00 | Maths                     | Athira        | 260.00 |
 +--------+-----------+-----+-------+------------+------+------------+-------------+------+---------------------------+---------------+--------+
 
+
+
+Q) find the students who have issued more than 2 books
+
+select studentid , name from library group by studentid having count(bookid)>2;
++-----------+----------+
+| studentid | name     |
++-----------+----------+
+|       101 | Midhun K |
++-----------+----------+
+
