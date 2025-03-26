@@ -8,3 +8,16 @@ select * from departments join students on departments.dno=students.dno  join bo
 create view library as (select * from departments natural join students natural  join bookissues natural join books);
 
 select * from library;
++--------+-----------+-----+-------+------------+------+------------+-------------+------+---------------------------+---------------+--------+
+| bookid | studentid | dno | dname | name       | age  | issue_date | return_date | fine | title                     | author        | price  |
++--------+-----------+-----+-------+------------+------+------------+-------------+------+---------------------------+---------------+--------+
+|      6 |       107 |   3 | BBA   | Akhila     |   23 | 2025-01-01 | NULL        | 0.00 | Data Structure            | Ramez Elmasri | 500.00 |
+|      7 |       109 |   2 | BCA   | Shameema   |   25 | 2025-02-02 | NULL        | 0.00 | Java                      | Nowshad       | 600.00 |
+|      1 |       101 |   1 | MCA   | Midhun K   |   32 | 2024-12-09 | 2024-12-10  | 0.00 | Database Systems          | Ramez Elmasri | 550.00 |
+|      2 |       101 |   1 | MCA   | Midhun K   |   32 | 2024-11-21 | 2024-11-28  | 0.00 | Operating System Concepts | Silberschatz  | 770.00 |
+|      2 |       101 |   1 | MCA   | Midhun K   |   32 | 2025-02-10 | NULL        | 0.00 | Operating System Concepts | Silberschatz  | 770.00 |
+|      4 |       102 |   1 | MCA   | Ann Mariya |   22 | 2025-01-11 | NULL        | 0.00 | Algorithms                | Cormen        | 110.00 |
+|      1 |       102 |   1 | MCA   | Ann Mariya |   22 | 2025-02-12 | 2025-02-18  | 0.00 | Database Systems          | Ramez Elmasri | 550.00 |
+|      5 |       105 |   1 | MCA   | Anusha A   |   29 | 2025-02-03 | NULL        | 0.00 | Maths                     | Athira        | 260.00 |
++--------+-----------+-----+-------+------------+------+------------+-------------+------+---------------------------+---------------+--------+
+
