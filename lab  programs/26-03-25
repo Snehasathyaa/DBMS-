@@ -2,6 +2,19 @@
 
 select * from departments join students on departments.dno=students.dno  join bookissues on students.studentid=bookissues.studentid  join books on bookissues.bookid=bookissues.bookid;
 
+SELECT 
+    students.name, 
+    books.title, 
+    librarians.name
+FROM 
+    bookissues 
+JOIN 
+    students s ON bi.student_id = s.student_id
+JOIN 
+    books b ON bi.book_id = b.book_id
+JOIN 
+    librarians l ON bi.librarian_id = l.librarian_id;
+
 
 ~~ create view and display
 
