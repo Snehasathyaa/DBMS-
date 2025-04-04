@@ -1,0 +1,27 @@
+insert into librarians values (1,'John Smith','john.smith@example.com',9876543210),(2,'Emma Brown','emma.brown@example.com',8765432109),(3,'David Wilson','david.wilson@example.com',7654321098),(4,'Franklin','franklin@example.com',3445236778);
+
+
+
+alter table bookissues
+    -> add column librarianid int,
+    -> add constraint  bookissue_fkey_labrarianid foreign key (librarianid) references librarians(librarianid);
+
+
+
+update bookissues set librarianid=1 where bookid in (101,102);
+update bookissues set librarianid=1 where bookid in (103,104);
+update bookissues set librarianid=1 where bookid in (105,106);
+
+
+SELECT 
+    students.student_name, 
+    books.book_title, 
+    librarians.librarian_name
+FROM 
+    bookissues
+JOIN 
+    students ON b.student_id = s.student_id
+JOIN 
+    books b ON bi.book_id = b.book_id
+JOIN 
+    librarians l ON bi.librarian_id = l.librarian_id;
