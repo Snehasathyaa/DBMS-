@@ -1,3 +1,70 @@
 1.
 
   create table books (accno int primary key  auto_increment,title varchar(100) unique not null,author varchar(50)  not null,price decimal(4,2),type enum('lending','reference'),availability enum('yes','no'),publisherid int);
+
+2.
+
+   create table publishers(publisherid int primary key auto_increment,name varchar(50) unique not null,address varchar(100) );
+
+3.
+
+  create table members(memberid int primary key auto_increment,name varchar(50) not null,address varchar(100), type enum('staff','student'));
+
+4.
+
+  create table issues(issueid int primary key auto_increment, memberid int,accno int, issuedate date,duedate date);
+
+5.
+
+  create table returns(returnid int auto_increment primary key,memberid int ,accno int,fine int default 0 CHECK (fine >= 0));
+
+6. 
+
+
+
+
+INSERT INTO publishers (name, address) VALUES
+('Penguin Random House', '123 Penguin St, New York, NY'),
+('HarperCollins', '456 Harper Rd, London, UK'),
+('Oxford University Press', '789 Oxford St, Oxford, UK'),
+('Macmillan', '101 Macmillan Ave, New York, NY'),
+('Simon & Schuster', '202 Simon Blvd, San Francisco, CA');
+
+
+
+
+
+insert into books (title, author, price, type, availability, publisherid) values
+('The Great Gatsby', 'F. Scott Fitzgerald', 10.99, 'lending', 'yes', 1),
+('1984', 'George Orwell', 8.99, 'lending', 'no', 2),
+('Moby Dick', 'Herman Melville', 12.49, 'reference', 'yes', 3),
+('To Kill a Mockingbird', 'Harper Lee', 7.99, 'lending', 'yes', 4),
+('War and Peace', 'Leo Tolstoy', 14.50, 'reference', 'yes', 5);
+
+
+
+INSERT INTO members (name, address, type) VALUES
+('Alice Johnson', '123 Elm St, New York, NY', 'staff'),
+('Bob Smith', '456 Oak Rd, London, UK', 'student'),
+('Charlie Davis', '789 Maple Ave, Oxford, UK', 'staff'),
+('Diana Green', '101 Pine Blvd, San Francisco, CA', 'student'),
+('Eve White', '202 Cedar Ln, New York, NY', 'staff');
+
+
+
+INSERT INTO members (name, address, type) VALUES
+('Alice Johnson', '123 Elm St, New York, NY', 'staff'),
+('Bob Smith', '456 Oak Rd, London, UK', 'student'),
+('Charlie Davis', '789 Maple Ave, Oxford, UK', 'staff'),
+('Diana Green', '101 Pine Blvd, San Francisco, CA', 'student'),
+('Eve White', '202 Cedar Ln, New York, NY', 'staff');
+
+
+INSERT INTO issues (memberid, accno, issuedate, duedate) VALUES
+(1, 1, '2025-04-01', '2025-04-15'),
+(2, 2, '2025-04-05', '2025-04-19'),
+(3, 3, '2025-04-10', '2025-04-24'),
+(4, 4, '2025-04-12', '2025-04-26'),
+(5, 5, '2025-04-08', '2025-04-22');
+
+  
