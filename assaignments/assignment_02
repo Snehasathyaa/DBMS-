@@ -1,0 +1,87 @@
+1
+select name, address
+from members;
+
+
+2
+select accno, title
+from books
+where title LIKE '%o%';
+
+3
+select *
+from books
+where type = 'lending' AND availability = 'yes';
+
+4
+select b.title, b.author, p.name AS publisher_name
+from books b
+join publishers p ON b.publisherid = p.publisherid;
+
+5
+select m.name, m.address, b.title
+from members m
+join issues i ON m.memberid = i.memberid
+join books b ON i.accno = b.accno
+ORDER BY b.title ASC;
+
+6
+select m.name, COUNT(i.accno) AS TotalBooksIssued
+from members m
+join issues i ON m.memberid = i.memberid
+GROUP BY m.memberid;
+
+7
+select m.name, m.address
+from members m
+left join issues i ON m.memberid = i.memberid
+where i.issueid IS NULL;
+
+8
+select b.title, b.author, COUNT(i.issueid) AS NumberofIssue
+from books b
+left join issues i ON b.accno = i.accno
+GROUP BY b.accno;
+
+9
+select m.name, COUNT(i.issueid) AS TotalBooksIssued
+from members m
+join issues i ON m.memberid = i.memberid
+GROUP BY m.memberid
+HAVING COUNT(i.issueid) > 2;
+
+10
+select b.title, b.author
+from books b
+left join issues i ON b.accno = i.accno
+WHERE i.issueid IS NULL;
+
+11
+select b.title, b.author, COUNT(i.issueid) AS TotalIssued
+from books b
+join issues i ON b.accno = i.accno
+GROUP BY b.accno
+ORDER BY TotalIssued DESC
+LIMIT 5;
+
+12
+select b.title, b.author, COUNT(i.issueid) AS TotalIssued
+from books b
+join issues i ON b.accno = i.accno
+GROUP BY b.accno
+HAVING COUNT(i.issueid) = (
+    select max(issue_count)
+    from (
+        select count(issueid) AS issue_count
+        from issues
+        GROUP BY accno
+    ) AS issue_counts
+);
+
+
+13
+select DISTINCT m.name, i.issuedate
+from members m
+join issues i ON m.memberid = i.memberid
+left join returns r ON i.memberid = r.memberid AND i.accno = r.accno
+where i.issuedate < '2023-06-01' AND r.returnid IS NULL;
